@@ -11,7 +11,7 @@ This project is a fully serverless employee management application built on AWS.
 - **Security**: IAM roles enforce least-privilege access for Lambda to interact with S3 and DynamoDB.
 
 ### Architecture
-![Architecture Diagram](architecture.png) 
+![Architecture Diagram](images/architecture.png) 
 
 1. Client loads the frontend from CloudFront/S3.
 2. JavaScript makes API calls to API Gateway.
