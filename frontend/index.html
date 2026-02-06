@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Manager | Serverless AWS App</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent position-absolute w-100 z-3">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#"><i class="fas fa-users-cog me-2"></i>EmpManager</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero-section d-flex align-items-center text-white text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-3 animate-fade-in">Manage Your Team Efficiently</h1>
+            <p class="lead mb-4 animate-fade-in delay-1">A powerful, serverless employee management system built on AWS.</p>
+            <button class="btn btn-light btn-lg rounded-pill shadow-lg animate-fade-in delay-2" data-bs-toggle="modal" data-bs-target="#employeeModal" onclick="resetForm()">
+                <i class="fas fa-plus me-2"></i>Add New Employee
+            </button>
+        </div>
+        <div class="hero-overlay"></div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container py-5 mt-n5 position-relative z-2">
+        <!-- Search and Filter (Optional placeholder for future) -->
+        
+        <!-- Employees Grid -->
+        <div id="loading" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2 text-muted">Loading employees...</p>
+        </div>
+
+        <div id="employee-grid" class="row g-4" style="display: none;">
+            <!-- Employee cards will be injected here via app.js -->
+        </div>
+
+        <div id="empty-state" class="text-center py-5" style="display: none;">
+            <img src="https://cdni.iconscout.com/illustration/premium/thumb/empty-state-2130362-1800926.png" alt="No Data" style="max-height: 200px; opacity: 0.7;">
+            <h4 class="mt-3 text-secondary">No employees found</h4>
+            <p class="text-muted">Get started by adding a new team member.</p>
+        </div>
+    </main>
+
+    <!-- Create/Update Employee Modal -->
+    <div class="modal fade" id="employeeModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content border-0 shadow-lg">
+                <div class="modal-header bg-gradient-primary text-white border-0">
+                    <h5 class="modal-title fw-bold" id="modalTitle">Add Employee</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body p-4">
+                    <form id="employeeForm">
+                        <input type="hidden" id="employeeId">
+                        
+                        <div class="mb-3">
+                            <label for="name" class="form-label fw-semibold">Full Name</label>
+                            <input type="text" class="form-control rounded-pill" id="name" required placeholder="e.g. Jane Doe">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="role" class="form-label fw-semibold">Job Role</label>
+                            <input type="text" class="form-control rounded-pill" id="role" required placeholder="e.g. Software Engineer">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label fw-semibold">Email Address</label>
+                            <input type="email" class="form-control rounded-pill" id="email" required placeholder="name@company.com">
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="photo" class="form-label fw-semibold">Profile Photo</label>
+                            <input type="file" class="form-control rounded-pill" id="photo" accept="image/*">
+                            <div id="currentPhotoContainer" class="mt-2 d-none">
+                                <small class="text-muted">Current photo:</small>
+                                <img id="currentPhoto" src="" alt="Current" class="rounded-circle ms-2" style="width: 40px; height: 40px; object-fit: cover;">
+                            </div>
+                        </div>
+
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary rounded-pill fw-bold py-2" id="submitBtn">
+                                <span id="btnSpinner" class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true"></span>
+                                <span id="btnText">Save Employee</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast align-items-center text-white bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body" id="toastMessage">
+                    Action successful!
+                </div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- App Logic -->
+    <script src="app.js"></script>
+</body>
+</html>

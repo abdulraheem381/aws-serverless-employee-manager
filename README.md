@@ -1,47 +1,28 @@
 # AWS Serverless Employee Manager
 
-## Overview
-This project is a fully serverless employee management application built on AWS. It allows users to create, read, update, and delete (CRUD) employee records, including storing employee photos. The architecture leverages AWS services for scalability, security, and cost-efficiency without managing servers.
+A complete serverless application for managing employee records. Built with AWS Lambda, DynamoDB, S3, and API Gateway.
 
-### Key Features
-- **Frontend**: Static web app (HTML, CSS, JavaScript) hosted on Amazon S3 with static website hosting enabled.
-- **Backend**: AWS Lambda functions handle CRUD operations, triggered via Amazon API Gateway from JavaScript HTTPS calls.
-- **Data Storage**: Employee details stored in Amazon DynamoDB (NoSQL database); photos uploaded to a separate S3 bucket.
-- **Distribution & DNS**: Amazon CloudFront accelerates frontend delivery; Amazon Route53 provides custom domain routing.
-- **Security**: IAM roles enforce least-privilege access for Lambda to interact with S3 and DynamoDB.
+## Features
+- **Serverless Backend**: Node.js Lambda functions using AWS SDK v3.
+- **Database**: DynamoDB for fast, scalable storage.
+- **File Storage**: S3 for employee photos and hosting the frontend.
+- **Modern UI**: Custom CSS + Bootstrap 5, responsive design with animations.
+- **Security**: Presigned URLs for secure direct-to-S3 photo uploads.
 
-### Architecture
-![Architecture Diagram](images/architecture.png) 
+## Project Structure
+- `/frontend`: Static web application (HTML/CSS/JS).
+- `/lambdas`: Backend logic (Node.js).
+- `/docs`: Setup instructions and architecture info.
 
-1. Client loads the frontend from CloudFront/S3.
-2. JavaScript makes API calls to API Gateway.
-3. API Gateway triggers Lambda functions (Create, List, Update, Delete).
-4. Lambdas read/write to DynamoDB and S3 for photos.
+## Getting Started
 
-### Prerequisites
-- AWS account
-- AWS CLI configured
-- Node.js (for potential Lambda code)
+1. **Deploy Infrastructure**: Follow the steps in [docs/setup-instructions.md](docs/setup-instructions.md) to create AWS resources and deploy the code.
+2. **Configure Frontend**: Update `frontend/app.js` with your API Gateway URL.
+3. **Run**: Open the `index.html` via S3 Website URL or locally with Live Server.
 
-### Setup Instructions
-1. Create S3 buckets for frontend and photos.
-2. Set up DynamoDB table (e.g., with `id` as partition key).
-3. Deploy Lambda functions (e.g., in Node.js/Python) for CRUD.
-4. Configure API Gateway to route to Lambdas.
-5. Set up CloudFront distribution pointing to S3 frontend.
-6. Add Route53 record for custom domain.
-7. Attach IAM roles for permissions.
+## Architecture
+- **Frontend**: S3 Static Website -> CloudFront (CDN).
+- **API**: API Gateway (REST) -> Lambda.
+- **Data**: DynamoDB (Employee metadata) + S3 (Photos).
 
-### Running the App
-- Upload frontend files to S3.
-- Access via CloudFront/Route53 URL.
-- Use the UI to manage employees.
-
-### Future Improvements
-- Add authentication with Amazon Cognito.
-- Implement CI/CD with AWS CodePipeline.
-
-For detailed deployment, refer to AWS documentation or the course materials.
-
-## License
-MIT License
+![Architecture](docs/architecture-diagram.png)

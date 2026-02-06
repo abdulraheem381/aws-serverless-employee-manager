@@ -1,0 +1,199 @@
+:root {
+    --primary-color: #4361ee;
+    --secondary-color: #3f37c9;
+    --accent-color: #4895ef;
+    --dark-bg: #1e1e1e;
+    --card-bg: #ffffff;
+    --text-primary: #2b2d42;
+    --text-secondary: #8d99ae;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    background-color: #f8f9fa;
+    color: var(--text-primary);
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar-brand {
+    font-size: 1.5rem;
+    letter-spacing: 0.5px;
+}
+
+/* Hero Section with Glassmorphism and Gradients */
+.hero-section {
+    height: 70vh; /* Taller hero */
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    position: relative;
+    border-bottom-left-radius: 50px; /* Modern curve */
+    border-bottom-right-radius: 50px;
+    box-shadow: 0 10px 30px rgba(67, 97, 238, 0.3);
+    overflow: hidden;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+    opacity: 0.1;
+    mix-blend-mode: overlay;
+}
+
+/* Adjust main container to overlap hero */
+.mt-n5 {
+    margin-top: -100px !important;
+}
+
+/* Cards */
+.card {
+    border: none;
+    border-radius: 20px;
+    background: var(--card-bg);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(67, 97, 238, 0.2);
+}
+
+.card-img-top-container {
+    height: 250px;
+    overflow: hidden;
+    position: relative;
+    background-color: #e9ecef;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.1);
+}
+
+.card-body {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.card-title {
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+.card-subtitle {
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+}
+
+.card-text {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
+
+.badge-role {
+    background-color: rgba(67, 97, 238, 0.1);
+    color: var(--primary-color);
+    padding: 0.5em 1em;
+    border-radius: 30px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: var(--primary-color);
+    border: none;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 10px rgba(67, 97, 238, 0.4);
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+.btn-action {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.btn-edit {
+    background-color: #e2e6ea;
+    color: var(--text-primary);
+}
+
+.btn-edit:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-delete {
+    background-color: #fee2e2;
+    color: #ef233c;
+}
+
+.btn-delete:hover {
+    background-color: #ef233c;
+    color: white;
+}
+
+/* Modal */
+.modal-content {
+    border-radius: 20px;
+}
+
+.bg-gradient-primary {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.form-control {
+    border: 2px solid #e9ecef;
+    padding: 0.75rem 1.25rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 4px rgba(67, 97, 238, 0.1);
+}
+
+/* Animations */
+.animate-fade-in {
+    opacity: 0;
+    animation: fadeInUp 0.8s forwards;
+}
+
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
