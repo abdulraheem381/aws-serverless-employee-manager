@@ -1,6 +1,0 @@
-[Place your architecture diagram image here named architecture-diagram.png]
-
-Flow:
-User -> CloudFront -> S3 (Frontend)
-User -> API Gateway -> Lambda -> DynamoDB
-User -> S3 (Photo Upload via Presigned URL)
