@@ -1,28 +1,77 @@
-# AWS Serverless Employee Manager
+# AWS Serverless Employee Manager 🚀
 
-A complete serverless application for managing employee records. Built with AWS Lambda, DynamoDB, S3, and API Gateway.
+A modern, serverless web application for managing employee records, built entirely on AWS. This project demonstrates a full CRUD operational system using a static frontend hosted on S3 and a serverless backend powered by Lambda and DynamoDB.
 
-## Features
-- **Serverless Backend**: Node.js Lambda functions using AWS SDK v3.
-- **Database**: DynamoDB for fast, scalable storage.
-- **File Storage**: S3 for employee photos and hosting the frontend.
-- **Modern UI**: Custom CSS + Bootstrap 5, responsive design with animations.
-- **Security**: Presigned URLs for secure direct-to-S3 photo uploads.
+## 📖 Full Tutorial and Guide
 
-## Project Structure
-- `/frontend`: Static web application (HTML/CSS/JS).
-- `/lambdas`: Backend logic (Node.js).
-- `/docs`: Setup instructions and architecture info.
+I have documented the entire process of building this application, from setting up the AWS resources to writing the code, in my Hashnode blog. 
 
-## Getting Started
+**👉 [Read the Full Guide on Hashnode](YOUR_HASHNODE_BLOG_LINK_HERE)**
 
-1. **Deploy Infrastructure**: Follow the steps in [docs/setup-instructions.md](docs/setup-instructions.md) to create AWS resources and deploy the code.
-2. **Configure Frontend**: Update `frontend/app.js` with your API Gateway URL.
-3. **Run**: Open the `index.html` via S3 Website URL or locally with Live Server.
+---
 
-## Architecture
-- **Frontend**: S3 Static Website -> CloudFront (CDN).
-- **API**: API Gateway (REST) -> Lambda.
-- **Data**: DynamoDB (Employee metadata) + S3 (Photos).
+## 🏗 Architecture
 
-![Architecture](docs/architecture-diagram.png)
+The application follows a serverless architecture pattern:
+1.  **Frontend**: Hosted on S3 and distributed via CloudFront for global low latency.
+2.  **API**: API Gateway REST API handles HTTP requests and routes them to Lambda.
+3.  **Backend**: Node.js Lambda functions execute business logic (Create, List, Update, Delete).
+4.  **Database**: DynamoDB provides fast, scalable NoSQL storage for employee data.
+5.  **Storage**: S3 is used for storing employee profile photos (uploaded via secure presigned URLs).
+
+![Architecture Diagram](docs/architecture-diagram.png)
+
+---
+
+## 🛠 Technologies Used
+
+**Frontend:**
+-   HTML5, CSS3, JavaScript (Vanilla)
+-   Bootstrap 5 (UI Framework)
+-   Glassmorphism & Modern UI Animations
+
+**AWS Services:**
+-   **AWS Lambda**: Serverless compute for backend logic.
+-   **Amazon DynamoDB**: NoSQL database.
+-   **Amazon S3**: Static hosting and object storage.
+-   **Amazon API Gateway**: RESTful API endpoints.
+-   **Amazon CloudFront**: Content Delivery Network (CDN).
+-   **AWS IAM**: Security and permission management.
+
+---
+
+## 📸 Project Proof & Implementation Details
+
+Here is the proof of the deployed application and the AWS resources configured.
+
+### 1. The Application in Action
+The fully functional employee management dashboard running on the web.
+![Website Running](docs/website-running-proof.png)
+
+### 2. AWS Lambda Functions
+Four Node.js functions handle the CRUD operations: `CreateEmployee`, `ListEmployees`, `UpdateEmployee`, and `DeleteEmployee`.
+![Lambda Functions](docs/lambda-functions.png)
+
+### 3. API Gateway Configuration
+REST API resources configured to trigger the respective Lambda functions.
+![API Gateway Routes](docs/api-gateway-routes.png)
+
+### 4. S3 Buckets
+Two buckets were created: one for hosting the static website code and another for storing uploaded employee photos.
+![S3 Buckets](docs/s3-buckets.png)
+
+### 5. DynamoDB Table
+*Screenshot not available, but here is the configuration used:*
+-   **Table Name**: `Employees`
+-   **Partition Key**: `id` (String)
+-   **Billing Mode**: Pay-per-request (On-demand)
+
+This table stores all employee metadata including name, role, email, and the S3 URL for their photo.
+
+### 6. CloudFront Distribution
+CloudFront is set up to serve the static website from the S3 bucket with HTTPS and low latency.
+![CloudFront Distribution](docs/cloudfront%20distribuution.png)
+
+### 7. IAM Role
+An IAM role (`EmpManagerLambdaRole`) was created to grant the Lambda functions permission to access DynamoDB, S3, and CloudWatch Logs.
+![IAM Role](docs/iam-role.png)

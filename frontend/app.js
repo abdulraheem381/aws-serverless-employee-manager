@@ -1,5 +1,5 @@
 // REPLACE_WITH_API_GATEWAY_URL
-const API_BASE_URL = 'https://replace-me.execute-api.us-east-1.amazonaws.com/prod';
+const API_BASE_URL = 'https://your-gateway-link.amazonaws.com/prod';
 
 // State
 let employees = [];
