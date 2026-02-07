@@ -6,7 +6,7 @@ A modern, serverless web application for managing employee records, built entire
 
 I have documented the entire process of building this application, from setting up the AWS resources to writing the code, in my Hashnode blog. 
 
-**👉 [Read the Full Guide on Hashnode](YOUR_HASHNODE_BLOG_LINK_HERE)**
+**👉 [Read the Full Guide on Hashnode](https://abdulraheem.hashnode.dev/building-a-serverless-employee-management-app-on-aws-a-step-by-step-guide)**
 
 ---
 
